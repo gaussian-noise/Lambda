@@ -1,28 +1,31 @@
- chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
-  if(request.txt === "hello"){
-    console.log("hey")
-    //let array = document.getElementsByClassName('col8 col');
-    let courses = document.getElementsByClassName('hierarchyLi dataLi tab_body_bg')
+    if (request.txt === "start") {
+        let courses = document.getElementsByClassName('hierarchyLi dataLi tab_body_bg');
 
-    //var grades = new Array();
-    var arr = [];
-    
-    for(i=0; i<courses.length; i++){
-      //grades[i] = array[i].innerText; 
-      if(courses[i].children[7] != undefined){
-        console.log(courses[i].children[1].innerText)
-        console.log(courses[i].children[7].innerText);
-        arr.push({
-          Course: courses[i].children[1].innerText,
-          Grade: courses[i].children[7].innerText
-      });
-      }
-      //console.log(grades[i])
+        var arr = [];
+
+        for (i = 0; i < courses.length; i++) {
+
+            if (courses[i].children[7] != undefined) {
+                var currentCourseGrade = courses[i].children[7].innerText;
+                currentCourseGrade = currentCourseGrade.replace(/(?:^[\s\u00a0]+)|(?:[\s\u00a0]+$)/g, ''); //essentially a trim()
+
+                if (currentCourseGrade != '') {
+
+                    console.log(courses[i].children[1].innerText);
+                    console.log(currentCourseGrade);
+
+                    arr.push({
+                        Course: courses[i].children[1].innerText,
+                        Grade: currentCourseGrade
+                    });
+                }
+            }
+        }
+
+        chrome.runtime.sendMessage({
+            info: arr
+        });
     }
-
-    chrome.runtime.sendMessage({
-      info: arr 
-    });
-  }
- })
+})
