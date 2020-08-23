@@ -1,13 +1,17 @@
 let data = JSON.parse(localStorage.getItem("courseGPA"));
 
-for(i=0; i<data.length; i++){
-  //if(data[i] != '&nbsp'){
-    console.log(data[i])
-    const div1 = document.createElement('div')
-    div1.textContent = data[i].Course 
-    const div2 = document.createElement('div')
-    div2.textContent = data[i].Grade
-    document.body.appendChild(div1)
-    document.body.appendChild(div2)
-  //}
+var completed_courses = document.getElementsByClassName("courses")[0];
+
+//inserting rows into the completed courses table
+for (i = 0; i < data.length; i++) {
+
+    var row = document.createElement("tr");
+    row.innerHTML = `<td>${data[i].Code}</td>
+                    <td>${data[i].Course}</td>
+                    <td>${data[i].Type}</td>
+                    <td class="grade">${data[i].Credits}</td>
+                    <td class="grade">${data[i].Grade}</td>`
+
+    completed_courses.appendChild(row);
+
 }

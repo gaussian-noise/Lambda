@@ -5,20 +5,35 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
         var arr = [];
 
+        function trim(courseElement) {
+            courseElement = courseElement.replace(/(?:^[\s\u00a0]+)|(?:[\s\u00a0]+$)/g, ''); //essentially a trim()
+            return courseElement;
+        }
+
         for (i = 0; i < courses.length; i++) {
 
             if (courses[i].children[7] != undefined) {
-                var currentCourseGrade = courses[i].children[7].innerText;
-                currentCourseGrade = currentCourseGrade.replace(/(?:^[\s\u00a0]+)|(?:[\s\u00a0]+$)/g, ''); //essentially a trim()
+                //var CourseGrade = courses[i].children[7].innerText;
+                //CourseGrade = CourseGrade.replace(/(?:^[\s\u00a0]+)|(?:[\s\u00a0]+$)/g, ''); //essentially a trim()
 
-                if (currentCourseGrade != '') {
+                CourseCode = trim((courses[i].children[0]).innerText);
+                CourseName = trim((courses[i].children[1]).innerText);
+                CourseCredits = trim((courses[i].children[2]).innerText);
+                CourseType = trim((courses[i].children[4]).innerText);
+                CourseGrade = trim((courses[i].children[7]).innerText);
+
+
+                if (CourseGrade != '') {
 
                     console.log(courses[i].children[1].innerText);
-                    console.log(currentCourseGrade);
+                    console.log(CourseGrade);
 
                     arr.push({
-                        Course: courses[i].children[1].innerText,
-                        Grade: currentCourseGrade
+                        Code: CourseCode,
+                        Course: CourseName,
+                        Credits: CourseCredits,
+                        Type: CourseType,
+                        Grade: CourseGrade
                     });
                 }
             }
