@@ -2,6 +2,7 @@ let studentData = JSON.parse(localStorage.getItem("student"));
 let courseData = JSON.parse(localStorage.getItem("courseGPA"));
 
 var completed_courses = document.getElementsByClassName("courses")[0];
+var additional_courses = document.getElementsByClassName("additionals")[0];
 
 //sending student info to displaygpa.html
 document.getElementsByClassName("stuName")[0].innerText = studentData[0].Name;
@@ -32,6 +33,7 @@ for (i = 0; i < courseData.length; i++) {
 
     }
 
+    //creating a row for a course
     var row = document.createElement("tr");
     row.innerHTML = `<td>${courseData[i].Code}</td>
                     <td>${courseData[i].Course}</td>
@@ -39,7 +41,10 @@ for (i = 0; i < courseData.length; i++) {
                     <td class="credit">${courseData[i].Credits}</td>
                     <td class="grade">${courseData[i].Grade}</td>`
 
-    completed_courses.appendChild(row);
+    if (excludedCourses.indexOf(courseData[i].Type) == -1) //completed courses
+        completed_courses.appendChild(row);
+    else if (excludedCourses.indexOf(courseData[i].Type) == 5) //additional courses
+        additional_courses.appendChild(row);
 }
 
 var CGPA = (sumGrades / totalCredits).toFixed(2);
