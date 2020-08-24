@@ -25,9 +25,11 @@ var excludedCourses = [
 for (i = 0; i < courseData.length; i++) {
 
     //-1 is for the S and I grade
-    if (excludedCourses.indexOf(courseData[i].Type) != -1 && courseData[i].NumberGrade != -1) {
+    if (excludedCourses.indexOf(courseData[i].Type) == -1 && courseData[i].NumberGrade != -1) {
         totalCredits = totalCredits + parseFloat(courseData[i].Credits);
         sumGrades += parseFloat(courseData[i].NumberGrade) * parseFloat(courseData[i].Credits);
+
+
     }
 
     var row = document.createElement("tr");
@@ -40,7 +42,6 @@ for (i = 0; i < courseData.length; i++) {
     completed_courses.appendChild(row);
 }
 
-var CGPA = sumGrades / totalCredits;
-
+var CGPA = (sumGrades / totalCredits).toFixed(2);
 
 document.getElementsByClassName("cgpa")[0].innerText = CGPA;
