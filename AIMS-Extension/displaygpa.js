@@ -3,11 +3,12 @@ let courseData = JSON.parse(localStorage.getItem("courseGPA"));
 
 var completed_courses = document.getElementsByClassName("courses")[0];
 
+console.log(studentData[0].Name);
 //sending student info to displaygpa.html
-document.getElementsByClassName("stuName")[0].innerText = studentData.Name;
-document.getElementsByClassName("stuRollno")[0].innerText = studentData.RollNo;
-document.getElementsByClassName("stuBranch")[0].innerText = studentData.Branch;
-document.getElementsByClassName("stuType")[0].innerText = studentData.StudentType;
+document.getElementsByClassName("stuName")[0].innerText = studentData[0].Name;
+document.getElementsByClassName("stuRollno")[0].innerText = studentData[0].RollNo;
+document.getElementsByClassName("stuBranch")[0].innerText = studentData[0].Branch;
+document.getElementsByClassName("stuType")[0].innerText = studentData[0].StudentType;
 
 //inserting rows into the completed courses table
 var totalCredits = 0.00,

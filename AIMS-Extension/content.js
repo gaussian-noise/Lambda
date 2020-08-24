@@ -75,15 +75,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             }
         }
 
-        //sending student information to background.js
+        //sending student and course information to background.js
         chrome.runtime.sendMessage({
             S_info: studentInfo,
             C_info: courseInfo
         });
 
-        //sending course information to background.js
-        /*chrome.runtime.sendMessage({
-            C_info: courseInfo
-        });*/
+
     }
 })
