@@ -3,7 +3,6 @@ let courseData = JSON.parse(localStorage.getItem("courseGPA"));
 
 var completed_courses = document.getElementsByClassName("courses")[0];
 
-console.log(studentData[0].Name);
 //sending student info to displaygpa.html
 document.getElementsByClassName("stuName")[0].innerText = studentData[0].Name;
 document.getElementsByClassName("stuRollno")[0].innerText = studentData[0].RollNo;
