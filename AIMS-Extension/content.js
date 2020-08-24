@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             return courseElement;
         }
 
-        function toNumberGrade(letterGrade) {
+        /*function toNumberGrade(letterGrade) {
             if (letterGrade == 'A+') {
                 return 10;
             } else if (letterGrade == 'A') {
@@ -32,12 +32,24 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
             } else if (letterGrade == 'S') {
                 return 'S';
             }
-        }
+        }*/
+        var numberGrades = {
+            'A+': 10,
+            'A': 10,
+            'A-': 9,
+            'B': 8,
+            'B-': 7,
+            'C': 6,
+            'C-': 5,
+            'D': 4,
+            'FR': 0,
+            'FS': 0,
+            'S': -1
+        };
+
         for (i = 0; i < courses.length; i++) {
 
             if (courses[i].children[7] != undefined) {
-                //var CourseGrade = courses[i].children[7].innerText;
-                //CourseGrade = CourseGrade.replace(/(?:^[\s\u00a0]+)|(?:[\s\u00a0]+$)/g, ''); //essentially a trim()
 
                 CourseCode = trim((courses[i].children[0]).innerText);
                 CourseName = trim((courses[i].children[1]).innerText);
@@ -58,7 +70,8 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                         Credits: CourseCredits,
                         Type: CourseType,
                         Grade: CourseGrade,
-                        NumberGrade: toNumberGrade(Grade)
+                        //NumberGrade: toNumberGrade(CourseGrade)
+                        NumberGrade: numberGrades[CourseGrade]
                     });
                 }
             }
