@@ -15,14 +15,18 @@
         }
         
         .courses th,
+        .upcoming th,
         .additionals th,
+        .special th,
         .summary th {
             color: black;
             text-align: center;
         }
         
         .courses td,
+        .upcoming td,
         .additionals td,
+        .special td,
         .summary td {
             background-color: white;
             ;
@@ -88,6 +92,9 @@
     <div style="padding-bottom: 15px;">
         <img src="Course Analysis.png" alt="" style="width: 100%;">
     </div>
+
+    <div class="error_head text-center" style="font-size: 3em; font-weight: bold; color: black;"></div>
+    <div class="error_body text-center" style="padding: 0px 20px 5px; font-size: 1.5em;"></div>
 
     <div class="container-fluid" style="flex:1;">
         <div class="full-width side-gap start">
@@ -170,12 +177,12 @@
                 <table class="courses table table-bordered table-hover" style="width: 85%;">
                     <thead style="background-color: rgb(255, 182, 46);">
                         <tr>
-                            <th scope="col"><button type="button" class="column btn btn-warning" id="zero"><strong>Semester</strong></button></th>
-                            <th scope="col"><button type="button" class="column btn btn-warning" id="one"><strong>Code</strong></button></th>
-                            <th scope="col"><button type="button" class="column btn btn-warning" id="two"><strong>Name</strong></button></th>
-                            <th scope="col"><button type="button" class="column btn btn-warning" id="three"><strong>Type</strong></button></th>
-                            <th scope="col"><button type="button" class="column btn btn-warning" id="four"><strong>Credits</strong></button></th>
-                            <th scope="col"><button type="button" class="column btn btn-warning" id="five"><strong>Grade</strong></button></th>
+                            <th scope="col"><button title="Click to sort in ascending order, click again to sort in descending order." type="button" class="column btn btn-warning" id="zero"><strong>Semester</strong></button></th>
+                            <th scope="col"><button title="Click to sort in ascending order, click again to sort in descending order." type="button" class="column btn btn-warning" id="one"><strong>Code</strong></button></th>
+                            <th scope="col"><button title="Click to sort in ascending order, click again to sort in descending order." type="button" class="column btn btn-warning" id="two"><strong>Name</strong></button></th>
+                            <th scope="col"><button title="Click to sort in ascending order, click again to sort in descending order." type="button" class="column btn btn-warning" id="three"><strong>Type</strong></button></th>
+                            <th scope="col"><button title="Click to sort in ascending order, click again to sort in descending order." type="button" class="column btn btn-warning" id="four"><strong>Credits</strong></button></th>
+                            <th scope="col"><button title="Click to sort in ascending order, click again to sort in descending order." type="button" class="column btn btn-warning" id="five"><strong>Grade</strong></button></th>
                         </tr>
                     </thead>
                 </table>
