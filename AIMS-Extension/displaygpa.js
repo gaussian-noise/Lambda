@@ -11,7 +11,7 @@ var additional_courses = document.getElementsByClassName("additionals")[0];
 
 if (studentData == null) {
     document.getElementsByClassName("error_head")[0].innerText = "ERROR";
-    console.log("error hai ki nahi?");
+    console.log("Rey why you not able to faallow instructions correctly?");
     document.getElementsByClassName("error_body")[0].innerText = "You have opened the extension on the wrong page. Go to View Courses after logging in on AIMS, then click Open Analysis. If you are on the View Courses page, then refresh the page, let the data load, then click Open Analysis.";
     document.getElementsByClassName("container-fluid")[0].style.display = "none";
 } else {
@@ -60,11 +60,6 @@ if (studentData == null) {
 
 
     for (i = 0; i < courseData.length; i++) {
-
-        if (parseFloat(courseData[i].NumberGrade) == -2) {
-            console.log(courseData[i].Course);
-            console.log(courseData[i].NumberGrade);
-        }
 
         //gathering data for the Credit Count table
         if (courseData[i].Type == "Departmental Elective") {
@@ -139,17 +134,12 @@ if (studentData == null) {
                             <td>${CourseTypes[course]}</td>`;
 
             credit_count.appendChild(row);
-
-            console.log(course);
-            console.log(CourseTypes[course]);
-            //row.createElement("td").innerHTML = course;
         }
     }
 
     //function to sort the tables
     var curry = function(n) {
         return function sortTable() {
-            console.log(n);
             var table,
                 rows,
                 switching,
@@ -185,8 +175,6 @@ if (studentData == null) {
                                 one from current row and one from the next:*/
                     x = rows[i].getElementsByTagName("td")[n];
                     y = rows[i + 1].getElementsByTagName("td")[n];
-                    console.log(x.innerHTML);
-                    console.log(y.innerHTML);
 
                     /*check if the two rows should switch place,
                                 based on the direction, asc or desc:*/
@@ -229,6 +217,8 @@ if (studentData == null) {
     document.getElementById("three").addEventListener("click", curry(3));
     document.getElementById("four").addEventListener("click", curry(4));
     document.getElementById("five").addEventListener("click", curry(5));
+
+    console.log("Nothing to see here, move on.");
 
     window.localStorage.removeItem("student");
     window.localStorage.removeItem("courseGPA");
