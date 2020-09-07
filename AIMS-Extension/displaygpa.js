@@ -116,6 +116,7 @@ if (studentData == null) {
                             <td>${courseData[i].Course}</td>
                             <td>${courseData[i].Type}</td>
                             <td class="credit">${courseData[i].Credits}</td>
+                            <td class="credit">${courseData[i].Reg}</td>
                             <td class="grade">${courseData[i].Grade}</td>`;
 
             if (excludedCourses.indexOf(courseData[i].Type) == -1)
@@ -229,6 +230,7 @@ if (studentData == null) {
     document.getElementById("three").addEventListener("click", curry(3));
     document.getElementById("four").addEventListener("click", curry(4));
     document.getElementById("five").addEventListener("click", curry(5));
+    document.getElementById("six").addEventListener("click", curry(6));
 
     window.localStorage.removeItem("student");
     window.localStorage.removeItem("courseGPA");
