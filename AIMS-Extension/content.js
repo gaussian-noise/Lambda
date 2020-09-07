@@ -55,23 +55,12 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                 if (courses[i].children[7] != undefined) {
 
                     //checking if the current course code appears multiple times (as backlogs or improvements)
-                    /*thisCode = courseInfo
-                        .map(function(thisCourse) {
-                            //console.log(thisCourse.Code);
-                            return thisCourse.Code.innerText;
-                        })
-                        .indexOf(courses[i].children[0].innerText);
-
-                    console.log(thisCode);*/
 
                     var currentCode = courses[i].children[0].innerText
 
                     if (courseCodes.indexOf(currentCode) == -1) {
                         courseCodes.push(currentCode);
 
-                        console.log(currentCode);
-
-                        //if (thisCode == -1) {
                         CourseCode = trim(courses[i].children[0].innerText);
                         CourseName = trim(courses[i].children[1].innerText);
                         CourseCredits = trim(courses[i].children[2].innerText);
@@ -95,7 +84,11 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
                             NumberGrade: numGrade,
                         });
                     }
+                    //sowie, pls no kill me
+                    courses[i].children[7].innerText = " FR";
+                    courses[i].children[7].style.color = "red";
                 }
+
             }
         }
 

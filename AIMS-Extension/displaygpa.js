@@ -111,6 +111,9 @@ if (studentData == null) {
         } else {
             //creating a row for a course
             var row = document.createElement("tr");
+            if (courseData[i].Grade == "FR" || courseData[i].Grade == "FS")
+                row.className = "table-danger";
+
             row.innerHTML = `<td class="semester">${courseData[i].Semester}</td>
                             <td>${courseData[i].Code}</td>
                             <td>${courseData[i].Course}</td>
